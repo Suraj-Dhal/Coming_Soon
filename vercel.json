@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "regions": ["bom1"],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.surajdhal.com" }],
+      "destination": "https://surajdhal.com/:path*",
+      "permanent": true
+    }
+  ]
+}

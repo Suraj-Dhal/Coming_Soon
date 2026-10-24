@@ -1,0 +1,31 @@
+{
+  "name": "surajdhal-coming-soon",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "figure": "node scripts/build-figure.mjs",
+    "check": "npm run typecheck && npm run lint && npm run build",
+    "share-images": "node scripts/build-share-images.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.118.0",
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.4.3",
+    "playwright-core": "1.64.1",
+    "sharp": "0.35.5",
+    "typescript": "6.0.3"
+  }
+}
