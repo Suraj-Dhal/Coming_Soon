@@ -1,6 +1,8 @@
 // Builds the static link-preview assets:
 //   app/opengraph-image.jpg + app/twitter-image.jpg — 1200×630 frame of the hero
-//   app/apple-icon.png — 180×180 home-screen / iMessage icon from app/icon.svg
+//
+// The site icons (app/favicon.ico, app/icon.png, app/apple-icon.png) are
+// cropped from the portrait and committed as-is; this script leaves them alone.
 //
 // The preview is a real screenshot of the page, so it stays faithful to the
 // design. Run it against a production server with Google Chrome installed:
@@ -13,11 +15,6 @@ import path from "node:path";
 
 const base = process.argv[2] ?? "http://localhost:3000";
 const app = path.join(process.cwd(), "app");
-
-await sharp(path.join(app, "icon.svg"), { density: 400 })
-  .resize(180, 180)
-  .png({ compressionLevel: 9 })
-  .toFile(path.join(app, "apple-icon.png"));
 
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 const page = await browser.newPage({
@@ -38,4 +35,4 @@ await sharp(png).jpeg({ quality: 86, mozjpeg: true }).toFile(og);
 await copyFile(og, path.join(app, "twitter-image.jpg"));
 
 const { size } = await stat(og);
-console.log(`opengraph-image.jpg 1200x630 ${(size / 1024).toFixed(0)} KB, apple-icon.png 180x180`);
+console.log(`opengraph-image.jpg 1200x630 ${(size / 1024).toFixed(0)} KB`);
