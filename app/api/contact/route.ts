@@ -69,7 +69,8 @@ export async function POST(request: NextRequest) {
     return reply({ ok: true });
   }
 
-  const ip = request.headers.get("x-real-ip") ?? request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  const ip =
+    request.headers.get("x-real-ip") ?? request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   if (rateLimited(ip)) {
     return reply({ ok: false, error: "You've sent a few messages already. Please try again later." }, 429);
   }

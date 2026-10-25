@@ -50,9 +50,9 @@ The development server runs at `http://localhost:3000`.
 
 ## Environment variables
 
-| Variable | Purpose |
-| --- | --- |
-| `SUPABASE_URL` | Supabase project URL |
+| Variable                   | Purpose                                    |
+| -------------------------- | ------------------------------------------ |
+| `SUPABASE_URL`             | Supabase project URL                       |
 | `SUPABASE_PUBLISHABLE_KEY` | Publishable key used for permitted inserts |
 
 Use server-side environment files only. Do not commit `.env.local`, service-role keys, or other secrets.

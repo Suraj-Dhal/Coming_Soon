@@ -127,10 +127,31 @@ body {
   will-change: transform;
 }
 
-.giant-type__row--0 { --speed: 120s; --offset: -40s; --in: 0.35s; }
-.giant-type__row--1 { --speed: 95s; --offset: -12s; --in: 0.5s; animation-direction: normal, reverse; margin-left: -18vw; }
-.giant-type__row--2 { --speed: 105s; --offset: -64s; --in: 0.65s; margin-left: -8vw; }
-.giant-type__row--3 { --speed: 130s; --offset: -30s; --in: 0.8s; animation-direction: normal, reverse; margin-left: -26vw; }
+.giant-type__row--0 {
+  --speed: 120s;
+  --offset: -40s;
+  --in: 0.35s;
+}
+.giant-type__row--1 {
+  --speed: 95s;
+  --offset: -12s;
+  --in: 0.5s;
+  animation-direction: normal, reverse;
+  margin-left: -18vw;
+}
+.giant-type__row--2 {
+  --speed: 105s;
+  --offset: -64s;
+  --in: 0.65s;
+  margin-left: -8vw;
+}
+.giant-type__row--3 {
+  --speed: 130s;
+  --offset: -30s;
+  --in: 0.8s;
+  animation-direction: normal, reverse;
+  margin-left: -26vw;
+}
 
 /* ---------- Motion-blurred figure ---------- */
 
@@ -229,8 +250,12 @@ body {
   background: #3e3e3e;
 }
 
-.status-bar__dots span:nth-child(2) { background: #6a6a6a; }
-.status-bar__dots span:nth-child(3) { background: #8e8e8e; }
+.status-bar__dots span:nth-child(2) {
+  background: #6a6a6a;
+}
+.status-bar__dots span:nth-child(3) {
+  background: #8e8e8e;
+}
 
 .status-bar__icons {
   display: flex;
@@ -283,9 +308,7 @@ body {
   justify-content: flex-start;
   min-height: 100svh;
   /* Spinner centred at mid-screen, chest height on the figure, as in the reference. */
-  padding:
-    max(5.5rem, calc(env(safe-area-inset-top) + 50svh - 32px))
-    1.5rem
+  padding: max(5.5rem, calc(env(safe-area-inset-top) + 50svh - 32px)) 1.5rem
     calc(env(safe-area-inset-bottom) + clamp(2rem, 6svh, 4rem));
   text-align: center;
 }
@@ -405,7 +428,9 @@ body {
 
 .pill__label > span {
   display: block;
-  transition: translate 0.55s var(--ease-out), opacity 0.4s var(--ease-out);
+  transition:
+    translate 0.55s var(--ease-out),
+    opacity 0.4s var(--ease-out);
 }
 
 .pill__label[data-hover]::after {
@@ -415,14 +440,18 @@ body {
   text-align: center;
   opacity: 0;
   translate: 0 110%;
-  transition: translate 0.55s var(--ease-out), opacity 0.4s var(--ease-out);
+  transition:
+    translate 0.55s var(--ease-out),
+    opacity 0.4s var(--ease-out);
 }
 
 @media (hover: hover) {
   .pill:hover {
     background-color: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.05), 0 18px 44px -18px rgba(0, 0, 0, 0.65);
+    box-shadow:
+      0 0 0 6px rgba(255, 255, 255, 0.05),
+      0 18px 44px -18px rgba(0, 0, 0, 0.65);
   }
 
   /* Drop the idle pulse so it can't override the hover glow. */
@@ -568,7 +597,9 @@ body {
   background: transparent;
   color: #d8d8d8;
   cursor: pointer;
-  transition: background-color 0.3s var(--ease-out), transform 0.4s var(--ease-spring);
+  transition:
+    background-color 0.3s var(--ease-out),
+    transform 0.4s var(--ease-spring);
 }
 
 .sheet__close svg {
@@ -752,78 +783,143 @@ body {
 /* ---------- Keyframes ---------- */
 
 @keyframes fade-in {
-  from { opacity: 0; }
+  from {
+    opacity: 0;
+  }
 }
 
 @keyframes rise-in {
-  from { opacity: 0; translate: 0 14px; }
+  from {
+    opacity: 0;
+    translate: 0 14px;
+  }
 }
 
 @keyframes drop-in {
-  from { opacity: 0; translate: 0 -10px; }
+  from {
+    opacity: 0;
+    translate: 0 -10px;
+  }
 }
 
 @keyframes figure-in {
-  from { opacity: 0; scale: 1.06; }
-  to { opacity: var(--o); scale: 1; }
+  from {
+    opacity: 0;
+    scale: 1.06;
+  }
+  to {
+    opacity: var(--o);
+    scale: 1;
+  }
 }
 
 @keyframes ghost-in {
-  from { opacity: 0; }
-  to { opacity: var(--o); }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: var(--o);
+  }
 }
 
 @keyframes sway-main {
-  from { transform: translateX(-1.2%); }
-  to { transform: translateX(1.6%); }
+  from {
+    transform: translateX(-1.2%);
+  }
+  to {
+    transform: translateX(1.6%);
+  }
 }
 
 @keyframes sway-near {
-  from { transform: translate(6%, -1.5%); }
-  to { transform: translate(10.5%, -2.5%); }
+  from {
+    transform: translate(6%, -1.5%);
+  }
+  to {
+    transform: translate(10.5%, -2.5%);
+  }
 }
 
 @keyframes sway-far {
-  from { transform: translate(-7%, -4%) scale(1.04); }
-  to { transform: translate(-11.5%, -3%) scale(1.05); }
+  from {
+    transform: translate(-7%, -4%) scale(1.04);
+  }
+  to {
+    transform: translate(-11.5%, -3%) scale(1.05);
+  }
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes light-drift {
-  from { transform: translate(-6%, -4%); }
-  to { transform: translate(14%, 10%); }
+  from {
+    transform: translate(-6%, -4%);
+  }
+  to {
+    transform: translate(14%, 10%);
+  }
 }
 
 @keyframes grain {
-  0% { transform: translate(0, 0); }
-  20% { transform: translate(-3%, 2%); }
-  40% { transform: translate(2%, -3%); }
-  60% { transform: translate(-2%, -1%); }
-  80% { transform: translate(3%, 3%); }
-  100% { transform: translate(1%, -2%); }
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-3%, 2%);
+  }
+  40% {
+    transform: translate(2%, -3%);
+  }
+  60% {
+    transform: translate(-2%, -1%);
+  }
+  80% {
+    transform: translate(3%, 3%);
+  }
+  100% {
+    transform: translate(1%, -2%);
+  }
 }
 
 @keyframes spinner-fade {
-  from { opacity: 1; }
-  to { opacity: 0.18; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.18;
+  }
 }
 
 @keyframes charge {
-  from { transform: scaleX(0.18); }
-  to { transform: scaleX(1); }
+  from {
+    transform: scaleX(0.18);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 @keyframes beckon {
-  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.16); }
-  70%, 100% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.16);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 12px rgba(255, 255, 255, 0);
+  }
 }
 
 @keyframes draw {
-  to { stroke-dashoffset: 0; }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 /* ---------- Responsive ---------- */

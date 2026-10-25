@@ -7,9 +7,7 @@ export type ContactInput = { name: string; email: string; message: string };
 export type ContactField = keyof ContactInput;
 export type FieldErrors = Partial<Record<ContactField, string>>;
 
-export type ContactResponse =
-  | { ok: true }
-  | { ok: false; error: string; fieldErrors?: FieldErrors };
+export type ContactResponse = { ok: true } | { ok: false; error: string; fieldErrors?: FieldErrors };
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 // Control characters other than tab and newlines.
@@ -31,10 +29,12 @@ export function validateContact(input: Record<string, unknown>): {
 
   if (!name) errors.name = "Please tell me your name.";
   else if (name.length > LIMITS.name) errors.name = `Keep your name under ${LIMITS.name} characters.`;
-  else if (CONTROL_CHARS.test(name) || LINE_BREAKS.test(name)) errors.name = "Your name contains characters I can't accept.";
+  else if (CONTROL_CHARS.test(name) || LINE_BREAKS.test(name))
+    errors.name = "Your name contains characters I can't accept.";
 
   if (!email) errors.email = "Please add your email so I can reply.";
-  else if (email.length > LIMITS.email || !EMAIL_PATTERN.test(email)) errors.email = "That email address doesn't look right.";
+  else if (email.length > LIMITS.email || !EMAIL_PATTERN.test(email))
+    errors.email = "That email address doesn't look right.";
 
   if (!message) errors.message = "Please write a short message.";
   else if (message.length > LIMITS.message) errors.message = `Keep your message under ${LIMITS.message} characters.`;

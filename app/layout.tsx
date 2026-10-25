@@ -5,8 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
 
 const title = "Suraj Dhal — Coming Soon";
-const description =
-  "Suraj Dhal, Tech & Management Professional. The new surajdhal.com is coming soon.";
+const description = "Suraj Dhal, Tech & Management Professional. The new surajdhal.com is coming soon.";
 
 // Preview images come from the file convention: app/opengraph-image.jpg,
 // app/twitter-image.jpg and their .alt.txt files (see scripts/build-share-images.mjs).
@@ -51,10 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={inter.variable}>
       <body>
         {children}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
       </body>
     </html>
   );
