@@ -1,74 +1,92 @@
 # surajdhal.com — Coming Soon
 
-Temporary landing page for surajdhal.com while the full site is built. One page:
-a grayscale, motion-blurred hero with a **Coming Soon** button that opens a
-contact form. Messages are stored in Supabase.
+The temporary landing page for [surajdhal.com](https://surajdhal.com) while the full site is being built. It presents a motion-led hero and a contact form whose messages are stored securely in Supabase.
+
+## Preview
+
+Visit the live landing page at [surajdhal.com](https://surajdhal.com). Share-card images are generated from the actual hero experience and live in `app/opengraph-image.jpg` and `app/twitter-image.jpg`.
+
+## Features
+
+- Responsive grayscale landing page
+- Motion-aware hero presentation
+- Contact form with validation and bot controls
+- Supabase-backed message storage
+- Open Graph, Twitter, Apple icon, and share-image support
+- Vercel-ready production deployment
 
 ## Stack
 
-- Next.js 16 (App Router) + TypeScript, plain CSS, no UI libraries
-- Supabase (`public.coming_soon_messages`) for storage
-- Hosted on Vercel
+- Next.js 16 App Router
+- React 19 and TypeScript
+- Plain CSS
+- Supabase
+- Vercel
 
-## Run locally
+## Structure
+
+```text
+.
+├── app/                 # Routes, API handlers, metadata, and page UI
+├── components/          # Reusable interface pieces
+├── lib/                 # Validation and server-side helpers
+├── public/              # Static visual assets
+├── scripts/             # Figure and share-image generation tools
+├── supabase/migrations/ # Database schema and security policies
+└── package.json         # Development and validation scripts
+```
+
+## Local development
+
+Requirements: Node.js compatible with the versions in `package.json` and npm.
 
 ```bash
 npm install
-cp .env.example .env.local   # then fill in the values
-npm run dev                  # http://localhost:3000
-npm run check                # typecheck + lint + production build
+cp .env.example .env.local
+npm run dev
 ```
+
+The development server runs at `http://localhost:3000`.
 
 ## Environment variables
 
-| Name | Purpose |
-|---|---|
+| Variable | Purpose |
+| --- | --- |
 | `SUPABASE_URL` | Supabase project URL |
-| `SUPABASE_PUBLISHABLE_KEY` | Publishable key. RLS limits it to inserting messages. |
+| `SUPABASE_PUBLISHABLE_KEY` | Publishable key used for permitted inserts |
 
-All variables are read on the server only; nothing is exposed to the browser.
+Use server-side environment files only. Do not commit `.env.local`, service-role keys, or other secrets.
 
-## How the contact form is protected
-
-1. The browser posts JSON to `/api/contact`; the handler rejects cross-origin
-   requests, non-JSON bodies and bodies over 12 KB.
-2. A hidden honeypot field and a minimum fill time quietly drop bots.
-3. Input is validated with the same rules as the form (`lib/contact.ts`), and a
-   best-effort per-IP limiter runs before the database.
-4. The database is the hard boundary (see `supabase/migrations/`): RLS is on,
-   the anon role may only insert `name`, `email` and `message`, it cannot read,
-   update or delete, and a trigger allows at most 3 messages per email and 100
-   overall per hour.
-
-## Reading messages
-
-Supabase dashboard → Table Editor → `coming_soon_messages`, or SQL:
-
-```sql
-select created_at, name, email, message
-from public.coming_soon_messages
-order by created_at desc;
-```
-
-## Link previews
-
-`app/opengraph-image.jpg` and `app/twitter-image.jpg` (1200×630) are a real
-screenshot of the hero, so shared links on WhatsApp, LinkedIn, X, Slack and
-iMessage show the page itself. Alt text lives in the matching `.alt.txt` files.
-`app/apple-icon.png` is rendered from `app/icon.svg`. After changing the design:
+## Validation and production
 
 ```bash
-npm run build && npm start            # in one terminal
-npm run share-images -- http://localhost:3000
+npm run typecheck
+npm run lint
+npm run build
+npm run check
+npm start
 ```
 
-The script drives the locally installed Google Chrome via `playwright-core`.
-
-## Regenerating the hero figure
-
-`public/figure.webp` is pre-blurred so the browser only animates transforms.
-To rebuild it from a transparent portrait:
+To regenerate the pre-blurred figure:
 
 ```bash
 npm run figure -- path/to/transparent-portrait.png
 ```
+
+To regenerate share images against a running local production server:
+
+```bash
+npm run share-images -- http://localhost:3000
+```
+
+## Security model
+
+The contact endpoint validates input, limits request size, rejects unexpected origins, uses a honeypot and minimum fill time, and relies on Supabase Row Level Security for the database boundary. Review `supabase/migrations/` before changing the form or table permissions.
+
+## Contributing
+
+Keep the landing page fast and focused. Run `npm run check` before submitting changes, and never include secrets or real production messages in commits.
+
+## License
+
+No license has been declared yet.
