@@ -2,14 +2,27 @@
   "name": "surajdhal-coming-soon",
   "version": "1.0.0",
   "private": true,
+  "description": "Coming Soon landing page for surajdhal.com, built with Next.js and a Supabase-backed contact form.",
+  "author": "Suraj Dhal (https://surajdhal.com)",
+  "license": "MIT",
+  "homepage": "https://surajdhal.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Suraj-Dhal/surajdhal-coming-soon.git"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm run build",
     "figure": "node scripts/build-figure.mjs",
-    "check": "npm run typecheck && npm run lint && npm run build",
     "share-images": "node scripts/build-share-images.mjs"
   },
   "dependencies": {
@@ -25,6 +38,7 @@
     "eslint": "9.39.5",
     "eslint-config-next": "16.4.3",
     "playwright-core": "1.64.1",
+    "prettier": "3.9.10",
     "sharp": "0.35.5",
     "typescript": "6.0.3"
   }
