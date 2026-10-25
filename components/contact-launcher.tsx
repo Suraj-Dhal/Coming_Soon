@@ -1,13 +1,7 @@
 "use client";
 
 import { useId, useRef, useState } from "react";
-import {
-  LIMITS,
-  validateContact,
-  type ContactField,
-  type ContactResponse,
-  type FieldErrors,
-} from "@/lib/contact";
+import { LIMITS, validateContact, type ContactField, type ContactResponse, type FieldErrors } from "@/lib/contact";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -125,16 +119,22 @@ export function ContactLauncher() {
                 <circle cx="26" cy="26" r="24" />
                 <path d="M15 27l7 7 15-16" />
               </svg>
-              <h2 id={`${id}-title`} className="sheet__title">Message sent</h2>
+              <h2 id={`${id}-title`} className="sheet__title">
+                Message sent
+              </h2>
               <p className="sheet__lede">Thank you. Your message is on its way to Suraj.</p>
               <button type="button" className="pill pill--solid" onClick={closeDialog} autoFocus>
-                <span className="pill__label"><span>Close</span></span>
+                <span className="pill__label">
+                  <span>Close</span>
+                </span>
               </button>
             </div>
           ) : (
             <>
               <p className="sheet__eyebrow">surajdhal.com</p>
-              <h2 id={`${id}-title`} className="sheet__title">Say hello</h2>
+              <h2 id={`${id}-title`} className="sheet__title">
+                Say hello
+              </h2>
               <p className="sheet__lede">
                 The full site is on its way. Until then, leave a message and it will reach Suraj directly.
               </p>
@@ -153,7 +153,11 @@ export function ContactLauncher() {
                     aria-describedby={describedBy("name")}
                     onInput={() => clearError("name")}
                   />
-                  {errors.name && <p id={`${id}-name-error`} className="field__error">{errors.name}</p>}
+                  {errors.name && (
+                    <p id={`${id}-name-error`} className="field__error">
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
 
                 <div className="field">
@@ -170,7 +174,11 @@ export function ContactLauncher() {
                     aria-describedby={describedBy("email")}
                     onInput={() => clearError("email")}
                   />
-                  {errors.email && <p id={`${id}-email-error`} className="field__error">{errors.email}</p>}
+                  {errors.email && (
+                    <p id={`${id}-email-error`} className="field__error">
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
 
                 <div className="field">
@@ -193,7 +201,11 @@ export function ContactLauncher() {
                       clearError("message");
                     }}
                   />
-                  {errors.message && <p id={`${id}-message-error`} className="field__error">{errors.message}</p>}
+                  {errors.message && (
+                    <p id={`${id}-message-error`} className="field__error">
+                      {errors.message}
+                    </p>
+                  )}
                 </div>
 
                 {/* Honeypot: hidden from people and assistive tech, tempting to bots. */}
@@ -202,7 +214,9 @@ export function ContactLauncher() {
                   <input id={`${id}-website`} name="website" type="text" tabIndex={-1} autoComplete="off" />
                 </div>
 
-                <p className="form__status" role="alert">{formError}</p>
+                <p className="form__status" role="alert">
+                  {formError}
+                </p>
 
                 <button
                   type="submit"

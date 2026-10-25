@@ -17,3 +17,6 @@ next-env.d.ts
 # os / logs
 .DS_Store
 *.log
+
+# testing
+coverage/

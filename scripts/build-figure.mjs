@@ -33,12 +33,7 @@ const motion = {
 };
 
 // Alpha drives the silhouette; it gets the smear plus a soft gaussian falloff.
-const alpha = await sharp(padded)
-  .extractChannel(3)
-  .convolve(motion)
-  .blur(9)
-  .linear(1.15, 0)
-  .toBuffer();
+const alpha = await sharp(padded).extractChannel(3).convolve(motion).blur(9).linear(1.15, 0).toBuffer();
 
 // Tone keeps faint interior variation (face, shirt) inside a near-black figure.
 // Flattening first stops transparent pixels from bleeding light into the edges.
@@ -50,10 +45,7 @@ const tone = await sharp(padded)
   .blur(7)
   .toBuffer();
 
-await sharp(tone)
-  .joinChannel(alpha)
-  .webp({ quality: 78, alphaQuality: 80, effort: 6 })
-  .toFile(out);
+await sharp(tone).joinChannel(alpha).webp({ quality: 78, alphaQuality: 80, effort: 6 }).toFile(out);
 
 const meta = await sharp(out).metadata();
 console.log(`figure.webp ${meta.width}x${meta.height} (source width ${width})`);

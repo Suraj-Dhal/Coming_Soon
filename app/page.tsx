@@ -13,7 +13,9 @@ export default function ComingSoonPage() {
       <section className="hero" aria-labelledby="hero-name">
         <Spinner />
         <div className="identity">
-          <h1 id="hero-name" className="identity__name">Suraj Dhal</h1>
+          <h1 id="hero-name" className="identity__name">
+            Suraj Dhal
+          </h1>
           <p className="identity__role">Tech &amp; Management Professional</p>
         </div>
         <ContactLauncher />
